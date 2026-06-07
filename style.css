@@ -365,6 +365,6 @@ tr.drag-over td { border-top: 2px solid var(--accent) !important; }
   .action-row { flex-direction: column; }
   .action-row .btn { width: 100%; }
 
-  thead th:nth-child(3),
-  tbody td:nth-child(3) { display: none; }
+  thead th:nth-child(4),
+  tbody td:nth-child(4) { display: none; }
 }
