@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>美股購買計算機</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>美股購買計算機</h1>
+    <p class="subtitle">輸入投資金額與比例，自動計算可購買股數</p>
+  </header>
+
+  <main>
+    <div id="no-key-banner" class="banner-warning hidden">
+      ⚠️ 請先在下方「API 設定」輸入 Finnhub API Key，才能抓取股價
+    </div>
+
+    <section id="settings-section" class="card">
+      <h2>API 設定（Finnhub）</h2>
+      <div class="api-key-row">
+        <input type="password" id="api-key-input" placeholder="輸入你的 Finnhub API Key" autocomplete="off" maxlength="40">
+        <button id="save-key-btn" class="btn btn-primary">儲存</button>
+      </div>
+      <p class="hint">免費申請：前往 <a href="https://finnhub.io/register" target="_blank" rel="noopener">finnhub.io/register</a> 註冊後，在 Dashboard 取得 API Key</p>
+      <span id="key-msg"></span>
+    </section>
+
+    <section id="add-stock-section" class="card">
+      <h2>新增追蹤標的</h2>
+      <div class="input-row">
+        <input type="text" id="stock-input" placeholder="輸入股票代號，如 AAPL" maxlength="10" autocomplete="off" spellcheck="false">
+        <button id="add-btn" class="btn btn-primary">新增追蹤</button>
+      </div>
+      <span id="add-error" class="error-msg"></span>
+    </section>
+
+    <section id="budget-section" class="card">
+      <h2>投資設定</h2>
+      <div class="budget-row">
+        <label for="total-budget">總投資金額（USD）</label>
+        <input type="number" id="total-budget" placeholder="例：10000" min="0" step="100">
+      </div>
+    </section>
+
+    <section id="watchlist-section" class="card">
+      <h2>追蹤列表</h2>
+      <p id="allocation-warning" class="warning hidden">⚠️ 已勾選標的的投入比例總和超過 100%，請重新調整</p>
+      <div class="table-wrapper">
+        <table id="watchlist-table">
+          <thead>
+            <tr>
+              <th class="drag-col"></th>
+              <th>本次購買</th>
+              <th>股票代號</th>
+              <th>公司名稱</th>
+              <th>即時股價（USD）</th>
+              <th>投入比例（%）</th>
+              <th>投入金額（USD）</th>
+              <th>可購買股數</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody id="watchlist-body">
+          </tbody>
+        </table>
+      </div>
+      <p id="empty-msg" class="empty-msg">尚未新增任何追蹤標的，請在上方輸入股票代號</p>
+    </section>
+
+    <section id="action-section" class="card">
+      <div class="action-row">
+        <button id="calculate-btn" class="btn btn-success" disabled>計算購買股數</button>
+        <button id="refresh-btn" class="btn btn-secondary">🔄 刷新股價</button>
+      </div>
+      <p id="last-updated" class="last-updated"></p>
+    </section>
+
+    <section id="summary-section" class="card hidden">
+      <h2>本次購買摘要</h2>
+      <div id="summary-content"></div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
