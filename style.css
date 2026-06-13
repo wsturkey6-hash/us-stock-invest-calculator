@@ -254,6 +254,47 @@ td input[type="number"] {
   display: inline-block;
 }
 
+/* ── Category select (form + row) ── */
+.category-select {
+  background: var(--input-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-size: 0.9rem;
+  padding: 0.45rem 0.6rem;
+  outline: none;
+  cursor: pointer;
+}
+
+.category-select:focus {
+  border-color: var(--accent);
+}
+
+td .category-select {
+  font-size: 0.85rem;
+  padding: 0.3rem 0.5rem;
+}
+
+/* ── Category group header row ── */
+.category-row td {
+  background: rgba(79, 142, 247, 0.08);
+  border-bottom: 1px solid var(--border);
+  font-size: 0.92rem;
+}
+
+.category-row strong {
+  color: var(--accent);
+  letter-spacing: 0.03em;
+}
+
+.category-empty td {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  text-align: center;
+  padding: 0.6rem;
+  font-style: italic;
+}
+
 /* ── Action section ── */
 .action-row {
   display: flex;
@@ -366,5 +407,5 @@ tr.drag-over td { border-top: 2px solid var(--accent) !important; }
   .action-row .btn { width: 100%; }
 
   thead th:nth-child(4),
-  tbody td:nth-child(4) { display: none; }
+  tbody tr:not(.category-row):not(.category-empty) td:nth-child(4) { display: none; }
 }

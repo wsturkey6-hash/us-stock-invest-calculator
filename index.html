@@ -31,6 +31,11 @@
       <h2>新增追蹤標的</h2>
       <div class="input-row">
         <input type="text" id="stock-input" placeholder="輸入股票代號，如 AAPL" maxlength="10" autocomplete="off" spellcheck="false">
+        <select id="category-select" class="category-select">
+          <option value="index">指數型ETF</option>
+          <option value="momentum">動能ETF</option>
+          <option value="stock" selected>個股</option>
+        </select>
         <button id="add-btn" class="btn btn-primary">新增追蹤</button>
       </div>
       <span id="add-error" class="error-msg"></span>
@@ -55,6 +60,7 @@
               <th>本次購買</th>
               <th>股票代號</th>
               <th>公司名稱</th>
+              <th>類別</th>
               <th>即時股價（USD）</th>
               <th>投入比例（%）</th>
               <th>投入金額（USD）</th>
