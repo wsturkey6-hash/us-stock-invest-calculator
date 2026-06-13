@@ -155,7 +155,10 @@ function onCheckChange(symbol, checked) {
   const stock = watchlist.find(s => s.symbol === symbol);
   if (!stock) return;
   stock.checked = checked;
+  // 取消勾選時，清除原本填寫的投入比例
+  if (!checked) stock.percent = 0;
   saveToLocalStorage();
+  renderTable();
   validateAllocation();
   updateCalculateButton();
 }
