@@ -367,10 +367,14 @@ function renderTable() {
     const label = CATEGORY_LABEL[catKey];
     html += `
       <tr class="category-row">
-        <td></td>
-        <td><input type="checkbox" ${cat.checked ? 'checked' : ''}
-            onchange="onCategoryCheckChange('${catKey}', this.checked)"></td>
-        <td colspan="4"><strong>${label}</strong></td>
+        <td colspan="5">
+          <label class="cat-toggle">
+            <input type="checkbox" ${cat.checked ? 'checked' : ''}
+                onchange="onCategoryCheckChange('${catKey}', this.checked)">
+            <span class="cat-name">${label}</span>
+          </label>
+        </td>
+        <td class="price-cell"></td>
         <td>
           <input type="number" value="${cat.percent || ''}" min="0" max="100" step="1"
               placeholder="0" onchange="onCategoryPercentChange('${catKey}', this.value)"> %
@@ -390,7 +394,7 @@ function renderTable() {
     }
     items.forEach(stock => {
       html += `
-        <tr class="${stock.checked ? 'selected-row' : ''}"
+        <tr class="item-row ${stock.checked ? 'selected-row' : ''}"
             draggable="true"
             ondragstart="onDragStart(event, '${stock.symbol}')"
             ondragover="onDragOver(event)"
